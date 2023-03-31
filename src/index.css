@@ -17,6 +17,10 @@ html {
     .bannerIcon{
         @apply w-16 h-16 bg-lightText bg-opacity-25 text-xl inline-flex
         items-center justify-center rounded-md shadow-shadowOne hover:bg-opacity-40
-        hover:translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300
+        hover:translate-y-1 transition-all hover:text-designColor cursor-pointer duration-300 border-none
     }
 }
+
+    .resumelist {
+        @apply w-full h-20 bg-designColor bg-opacity-25 text-xl flex justify-center cursor-pointer hover:bg-opacity-40 duration-300 items-center
+    }
