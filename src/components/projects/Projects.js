@@ -15,11 +15,15 @@ const Projects = () => {
                 <ProjectCard
                 title="RecGrabber"
                 description="Search Near CampingSites/Trails/BikeTrails by the location! Used NodeJS, HTML, CSS "
-                src={recgrabber}/>
+                src={recgrabber}
+                glink="https://github.com/wasmulb/RecGrabber"
+                wlink="https://wasmulb.github.io/RecGrabber/"/>
                 <ProjectCard
                 title="YoutubeClone"
                 description="Clone of YouTube and similarity function as YouTube Used ReactJs, NodeJs, HTML, CSS"
-                src={youtubeclone}/>
+                src={youtubeclone}
+                glink="https://github.com/Aecop/YoutTubeClone"
+                wlink="https://aecopytclone.netlify.app"/>
             </div>
         </secton>
     )

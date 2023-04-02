@@ -24,3 +24,7 @@ html {
     .resumelist {
         @apply w-full h-20 bg-designColor bg-opacity-25 text-xl flex justify-center cursor-pointer hover:bg-opacity-40 duration-300 items-center
     }
+
+    .contactInput{
+        @apply w-full h-12 rounded-lg border-b-[1px] border-b-designColor text-lightText px-4
+    }
