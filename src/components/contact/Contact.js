@@ -1,96 +1,23 @@
-import React, { useState } from 'react';
-import Title from "../featurelayout";
-import { validateEmail } from "../../assets/utils/helpers";
+import React from 'react';
+import Title from '../featurelayout/Title';
+import ContactLeft from './ContactLeft';
+import ContactRight from './ContactRight';
+
 
 const Contact = () => {
-    const [formState, setFormState] = useState({
-        name: "",
-        email: "",
-        message: "",
-    });
-
-    const [errorMessage, setErrorMessage] = useState("");
-
-    const { name, email, message } = formState;
-
-    function handleChange(e) {
-        if (e.target.name === "email") {
-            const isValid = validateEmail(e.target.value);
-            if (!isValid) {
-                setErrorMessage("Your email is invalid.");
-            } else {
-                if (!e.target.value.length) {
-                    setErrorMessage(`${e.target.name} is required.`);
-                } else {
-                    setErrorMessage("");
-                }
-            }
-        }
-
-        if (!errorMessage) {
-            setFormState({ ...formState, [e.target.name]: e.target.value });
-        }
-    }
-
-    function handleBlank(e) {
-        if (e.target.name === "Name" || e.target.name === "Message") {
-            if (!e.target.value.length) {
-                setErrorMessage(`${e.target.name} is required.`);
-            } else {
-                setErrorMessage("");
-            }
-        }
-
-        if (!errorMessage) {
-            setFormState({ ...formState, [e.target.name]: e.target.value });
-        }
-    }
     return (
-        <section id="contact" className="w-full h-[700px] py-10 border-b-[1px] border-b-black mt-10">
+        <section id='contact' className="w-full py-20 border-b-[1px] border-b-black">
             <div className="flex justify-center items-center text-center">
                 <Title
-                    title="Contact"
-                    description="If Any Questions or Feedback, Contact Me!"/>
+                title="contact"
+                description="Contact me if any question or adivce!"/>
             </div>
-            <div className="flex flex-col justify-center items-center">
-                <form className="">
-                    <div className="flex flex-col justify-center items-center mt-4">
-                        <label htmlFor="Name">Name</label>
-                        <br></br>
-                        <input
-                            type="text"
-                            defaultValue={name}
-                            onBlur={handleBlank}
-                            name="Name"
-                        />
-                    </div>
-                    <div className="flex flex-col justify-center items-center mt-4">
-                        <label htmlFor="email">Email address</label>
-                        <br></br>
-                        <input
-                            type="email"
-                            defaultValue={email}
-                            name="email"
-                            onBlur={handleChange}
-                        />
-                    </div>
-                    <div className="flex flex-col justify-center items-center mt-4">
-                        <label htmlFor="Message">Message</label>
-                        <br></br>
-                        <textarea
-                            name="Message"
-                            defaultValue={message}
-                            onBlur={handleBlank}
-                            rows="5"
-                        />
-                    </div>
-                    {errorMessage && (
-                        <div className="flex flex-col justify-center items-center">
-                            <p className="error-text">{errorMessage}</p>
-                        </div>
-                    )}
-                    <button className="flex justify-center items-center" type="submit">Submit</button>
-                </form>
+            <div className="w-full">
+                <div className="w-full h-[600px] flex justify-between">
+                    <ContactLeft />
+                    <ContactRight />
+
+                </div>
             </div>
         </section>
     )

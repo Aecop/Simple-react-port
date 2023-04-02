@@ -1,6 +1,7 @@
 import bannerimg from './img/bannerimg.png';
 import recgrabber from './img/recgrabber.png';
 import youtubeclone from './img/youtubeclone.png';
+import contactimg from './img/contactimg.jpg';
 
 
 
@@ -10,5 +11,6 @@ import youtubeclone from './img/youtubeclone.png';
 export {
     bannerimg,
     recgrabber,
-    youtubeclone
+    youtubeclone,
+    contactimg
 };
