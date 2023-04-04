@@ -1,12 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 // import { YOUR_SERVICE_ID, YOUR_TEMPLATE_ID, YOUR_PUBLIC_KEY } from 'dotenv'
 // require('dotenv').config();
 
 
-
 const ContactRight = () => {
     const form = useRef();
+
+    const [sentEmail, setSentEmail] = useState(false)
+
+    if (sentEmail === true){
+        return (
+            <p className="text-designColor flex justify-center items-center">Email Sent Successfully!</p>
+        )
+    }
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -21,7 +28,8 @@ const ContactRight = () => {
             .then((result) => {
                 console.log(result.text);
                 console.log("message sent")
-                e.target.reset();
+                setSentEmail(true)
+                e.target.reset(true);
             }, (error) => {
                 console.log(error.text);
                 console.log("message failed")
@@ -49,6 +57,9 @@ const ContactRight = () => {
                     <textarea  cols="30" rows="10" name="message"/>
                     <input className="border-2 w-auto border-designColor mt-2 hover:bg-gradient-to-b hover:from-bodyColor
                        hover:grayscale-900 transition-colors duration-1000 cursor-pointer "  type="submit" value="Send" />
+                </div>
+                <div className="flex justify-center items-center">
+                    {sentEmail}
                 </div>
             </form>
         </div>
