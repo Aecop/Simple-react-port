@@ -8,10 +8,17 @@ const ContactRight = () => {
     const form = useRef();
 
     const [sentEmail, setSentEmail] = useState(false)
+    const [failEmail, setFailEmail] = useState(false)
 
     if (sentEmail === true){
         return (
             <p className="text-designColor flex justify-center items-center">Email Sent Successfully!</p>
+        )
+    };
+
+    if (failEmail === true){
+        return(
+            <p className="text-designColor flex justify-center items-center">Email Failed To Sent</p>
         )
     }
 
@@ -22,7 +29,7 @@ const ContactRight = () => {
             'service_dkwybxn',
             'template_bwfw2ga',
             form.current,
-            "tHTeq0vImsUUDDN9g"
+            process.env.REACT_APP_PUBLIC_KEY
         )
 
             .then((result) => {
@@ -32,6 +39,7 @@ const ContactRight = () => {
                 e.target.reset(true);
             }, (error) => {
                 console.log(error.text);
+                setFailEmail(true)
                 console.log("message failed")
             });
     };
@@ -41,25 +49,26 @@ const ContactRight = () => {
                 <div className="w-full flex gap-3">
                     <div className="w-1/2 flex flex-col ">
                         <p className="text-lg text-base mb-1">Name</p>
-                        <input className="contactInput" name="from_name" type="text"/>
+                        <input className="contactInput caret-designColor text-designColor" name="from_name" type="text"/>
                     </div>
                     <div className="w-1/2 flex flex-col">
                         <p className="text-lg text-base mb-1">Email</p>
-                        <input className="contactInput" name="from_email" type="text"/>
+                        <input className="contactInput caret-designColor text-designColor" name="from_email" type="text"/>
                     </div>
                 </div>
                 <div className="w-full flex flex-col">
                     <p className="text-lg text-base mb-1">Subject</p>
-                    <input className="contactInput" type="text"/>
+                    <input className="contactInput caret-designColor text-designColor" type="text"/>
                 </div>
                 <div className="w-full flex flex-col">
                     <p className="text-lg text-base mb-1">Message</p>
                     <textarea  cols="30" rows="10" name="message"/>
-                    <input className="border-2 w-auto border-designColor mt-2 hover:bg-gradient-to-b hover:from-bodyColor
-                       hover:grayscale-900 transition-colors duration-1000 cursor-pointer "  type="submit" value="Send" />
+                    <input className=" caret-designColor border-2 w-auto border-designColor mt-2 hover:bg-gradient-to-b hover:from-bodyColor
+                       hover:grayscale-900 transition-colors duration-1000 cursor-pointer text-designColor"  type="submit" value="Send" />
                 </div>
                 <div className="flex justify-center items-center">
                     {sentEmail}
+                    {failEmail}
                 </div>
             </form>
         </div>
